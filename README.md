@@ -1,5 +1,5 @@
 # Urdu2Eng Transformer  
-** CS455 NLP Project **  
+CS455 NLP Project  
 **Author:** Ehtisham Khalid (2021147)
 
 ---
