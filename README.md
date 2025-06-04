@@ -1,95 +1,101 @@
-Urdu2Eng Transformer
-CS455 NLP Project
-By: Ehtisham Khalid (2021147)
+# Urdu2Eng Transformer  
+**CS455 NLP Project **  
+**Author:** Ehtisham Khalid (2021147)
 
-Project Overview
-This project implements a Transformer-based Neural Machine Translation (NMT) model that translates text from Urdu to English. The architecture leverages Sinusoidal Positional Embeddings and is built using PyTorch, without relying on high-level abstractions like torchtext.
+---
 
-The project showcases:
+## Project Overview
 
-Custom Transformer encoder-decoder model implementation
+This project implements a **Transformer-based Neural Machine Translation (NMT) model** that translates text from **Urdu to English**. The architecture leverages **Sinusoidal Positional Embeddings** and is built using **PyTorch**, without relying on high-level abstractions like `torchtext`.
 
-Tokenization using spaCy
+The project includes:
+- Custom transformer encoder-decoder architecture
+- Sinusoidal positional encoding
+- BLEU score evaluation
+- Manual vocabulary and token handling using spaCy and NLTK
+- Data batching and padding from scratch
 
-BLEU score-based evaluation
+---
 
-Training pipeline built from scratch
+## Features
 
-Dataset preprocessing pipeline
+- Transformer model with:
+  - Multi-head self-attention
+  - Position-wise feedforward networks
+  - Layer normalization and dropout
+- Sinusoidal positional encoding (as per Vaswani et al.)
+- BLEU Score evaluation for translation quality
+- Dynamic batching using `pad_sequence` and `DataLoader`
+- No reliance on high-level libraries like `torchtext`
 
-Features
-Complete transformer architecture including:
+---
 
-Multi-head attention
+## Installation
 
-Layer normalization
+Install the required packages before running the notebook:
 
-Position-wise feedforward networks
-
-Sinusoidal positional encoding as described in the original Transformer paper
-
-BLEU Score evaluation for translation performance
-
-Preprocessing and batching using pad_sequence and DataLoader
-
-Installation
-Before running the code, install the required packages:
-
-bash
-Copy
-Edit
+```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 pip install spacy
 pip install nltk
 python -m spacy download en_core_web_sm
+
 Project Structure
-TransformerEncoderLayer – Custom implementation of a Transformer Encoder block
+TransformerEncoderLayer – Custom Transformer encoder block
 
-TransformerDecoderLayer – Custom implementation of Decoder block (present later in the notebook)
+TransformerDecoderLayer – Decoder block implementation (defined in notebook)
 
-PositionalEncoding – Sinusoidal positional embedding module
+PositionalEncoding – Implements sinusoidal embedding of positions
 
-build_vocab() – Manual vocabulary construction using frequency thresholds
+build_vocab() – Vocabulary builder based on token frequency
 
-collate_fn() – Batch collation and padding
+collate_fn() – Custom batch collation and sequence padding
 
-train() and evaluate() – Custom training and evaluation loops
+train() / evaluate() – Custom training and evaluation loops
 
-BLEU – Evaluation of translation performance using BLEU score
+BLEU – Translation quality measurement using BLEU score
 
 Dataset
-This project likely uses a parallel Urdu-English corpus (not shown in the provided snippet). You will need:
+To run the model, you will need a parallel Urdu-English dataset with tokenized sentence pairs.
 
-A tokenized Urdu-English sentence pair dataset
+Basic preprocessing should include:
 
-Preprocessing to lowercase, remove punctuations, and clean the data
+Lowercasing
+
+Removing punctuation
+
+Tokenization using spaCy (English) and basic Urdu rules
 
 Evaluation
-Model is evaluated using BLEU Score
+Translation quality is evaluated using BLEU Score
 
-Qualitative evaluation through sample translation outputs
+Sentence-level performance is calculated
 
-Sentence-level metrics to gauge fluency and adequacy
+Qualitative checks include output samples and manual accuracy
 
 How to Run
-Clone the repository or open the notebook.
+Clone this repository or open the .ipynb file in Jupyter or Colab.
 
-Install the required dependencies.
+Install the dependencies listed above.
 
-Load the dataset and define SRC (Urdu) and TGT (English) tokens.
+Load and preprocess your Urdu-English dataset.
 
-Run training and monitor the BLEU scores.
+Define source (SRC) and target (TGT) token mappings.
 
-Test the model with your own Urdu sentences.
+Train the model using the provided train() function.
+
+Evaluate using BLEU score and test translations.
 
 Future Improvements
-Integrate a larger corpus (e.g., OpenSubtitles, OPUS)
+Use larger and more diverse Urdu-English datasets (e.g., OPUS, TED Talks)
 
-Introduce Byte-Pair Encoding (BPE) for subword tokenization
+Add subword tokenization (Byte Pair Encoding or SentencePiece)
 
-Experiment with learned positional embeddings
+Add beam search for improved decoding
 
-Hyperparameter tuning (heads, layers, d_model)
+Implement attention visualization
+
+Hyperparameter optimization
 
 License
-This project is for academic and research purposes only. Please cite appropriately if reused.
+This project is intended for academic and research use. Please cite appropriately if reusing the code or methodology.
